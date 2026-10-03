@@ -1,0 +1,12 @@
+{
+  "name": "enigma",
+  "version": "1.0.0",
+  "description": "Enigma machine simulator with a web UI",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "dev": "node server.js",
+    "start": "node server.js"
+  }
+}

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Enigma Machine</title>
+<meta name="description" content="A historically accurate Enigma machine simulator with rotors, ring settings, reflector and plugboard.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Enigma</h1>
+    <div class="sub">Wehrmacht &amp; Kriegsmarine cipher machine simulator</div>
+  </header>
+
+  <section class="panel">
+    <h2>Rotors &amp; Reflector</h2>
+    <div class="rotor-bank" id="rotorBank"></div>
+    <div class="settings-row" style="margin-top:14px">
+      <div class="setting">
+        <label for="reflector">Reflector (UKW)</label>
+        <select id="reflector">
+          <option value="A">UKW-A</option>
+          <option value="B" selected>UKW-B</option>
+          <option value="C">UKW-C</option>
+        </select>
+      </div>
+      <div class="setting">
+        <label for="rotorCount">Rotor count</label>
+        <select id="rotorCount">
+          <option value="3" selected>3 — Wehrmacht / Luftwaffe</option>
+          <option value="4">4 — Kriegsmarine M4</option>
+        </select>
+      </div>
+    </div>
+    <div class="bar">
+      <button class="btn" id="randomBtn" type="button">Random key</button>
+      <button class="btn" id="resetBtn" type="button">Reset to AAA</button>
+      <span class="spacer"></span>
+      <span class="status" id="posStatus"></span>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Plugboard (Steckerbrett)</h2>
+    <div class="plug-grid" id="plugboard"></div>
+    <div class="plug-info">
+      <span>Pairs: <code id="plugPairs">none</code></span>
+      <span id="plugCount">0 of 13 cables</span>
+      <button class="btn ghost" id="clearPlugs" type="button">Clear</button>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Lampboard</h2>
+    <div class="board" id="lampboard"></div>
+  </section>
+
+  <section class="panel">
+    <h2>Keyboard</h2>
+    <div class="board" id="keyboard"></div>
+    <div class="bar">
+      <span class="status">Type on your physical keyboard, or click the keys above.</span>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Message</h2>
+    <div class="io">
+      <div class="io-box">
+        <label for="input">Input</label>
+        <textarea id="input" spellcheck="false" autocomplete="off"
+          placeholder="Type or paste a message…"></textarea>
+      </div>
+      <div class="io-box">
+        <label for="output">Output</label>
+        <textarea id="output" spellcheck="false" readonly
+          placeholder="Ciphertext appears here…"></textarea>
+      </div>
+    </div>
+    <div class="bar">
+      <button class="btn primary" id="copyBtn" type="button">Copy output</button>
+      <button class="btn" id="swapBtn" type="button">Output → Input</button>
+      <button class="btn ghost" id="clearBtn" type="button">Clear</button>
+      <label class="check"><input type="checkbox" id="group5" checked> Group in 5s</label>
+      <span class="spacer"></span>
+      <span class="status" id="status"></span>
+    </div>
+  </section>
+
+  <footer>
+    Encryption is reciprocal — set the same key and run the ciphertext back through to decrypt.<br>
+    No letter can ever encipher to itself. Rotor windows show the setting <em>after</em> the message.<br>
+    Verified against the Enigma Instruction Manual, 1930. Run <code>npm test</code> for the suite.
+  </footer>
+
+</div>
+<div class="sr-only" role="status" aria-live="polite" id="live"></div>
+<script type="module" src="app.js"></script>
+</body>
+</html>
